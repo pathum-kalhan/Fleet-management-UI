@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer app v-model="drawer" v-if="token">
+    <v-navigation-drawer app v-model="drawer" v-if="token" dark>
       
       <v-list>
         <template v-for="item in permissions">

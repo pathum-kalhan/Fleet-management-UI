@@ -252,8 +252,8 @@ module.exports = {
             'icon-alt': 'fa-angle-down',
             text: 'Vehicle maintenance',
             children: [
-                { text: 'Create a trip', path: '/maintenance' },
-                { text: 'View and update trips', path: '/viewMaintence' },
+                { text: 'Create a job', path: '/maintenance' },
+                { text: 'View jobs', path: '/viewMaintence' },
             ],
         },
         
