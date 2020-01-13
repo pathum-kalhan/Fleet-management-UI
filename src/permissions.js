@@ -79,7 +79,7 @@ module.exports = {
 
                 { text: 'Fuel report', path: '/fuelR' },
                 { text: 'Maintenance report', path: '/maintaR' },
-                { text: 'Finance report', path: '/categoryR' },
+                { text: 'Finance report', path: '/financeR' },
 
                 { text: 'Summary report', path: '/categoryR' },
 
@@ -216,7 +216,8 @@ module.exports = {
 
                 { text: 'Fuel report', path: '/fuelR' },
                 { text: 'Maintenance report', path: '/maintaR' },
-                { text: 'Finance report', path: '/categoryR' },
+                { text: 'Finance report', path: '/financeR' },
+
 
                 { text: 'Summary report', path: '/categoryR' },
 

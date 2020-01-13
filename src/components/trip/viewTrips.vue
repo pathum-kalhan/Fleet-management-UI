@@ -10,7 +10,7 @@
         </v-card-title>
         <v-card-text>
           <v-text-field label="Search" v-model="search" outline></v-text-field>
-          {{role}}
+
           <v-data-table :items="items" :headers="headers" :search="search" disable-initial-sort>
             <template slot="items" slot-scope="props">
               <td>{{props.item.id}}</td>
@@ -49,64 +49,69 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
+
 export default {
   computed: {
-    ...mapState(["role"])
+    ...mapState(['role']),
   },
   mounted() {
     this.GET();
   },
   data() {
     return {
-      search: "",
+      search: '',
       items: [],
       headers: [
-        { text: "Id", value: "id" },
-        { text: "Vehicle", value: "vehicle.vin" },
-        { text: "Driver", value: "user.name" },
-        { text: "Start", value: "startFrom" },
-        { text: "End", value: "stopAt" },
-        { text: "Places", value: "places" },
-        { text: "Allowances", value: "allowances" },
-        { text: "Status", value: "status" },
+        { text: 'Id', value: 'id' },
+        { text: 'Vehicle', value: 'vehicle.vin' },
+        { text: 'Driver', value: 'user.name' },
+        { text: 'Start', value: 'startFrom' },
+        { text: 'End', value: 'stopAt' },
+        { text: 'Places', value: 'places' },
+        { text: 'Allowances', value: 'allowances' },
+        { text: 'Status', value: 'status' },
         {
-          text: "createdAt",
-          value: "createdAt"
+          text: 'createdAt',
+          value: 'createdAt',
         },
         {
-          text: "Actions",
+          text: 'Actions',
           value: null,
-          sortable: false
+          sortable: false,
         },
-        { text: "Notes", value: "notes", width: 100 }
+        { text: 'Notes', value: 'notes', width: 100 },
       ],
-      alertType: "error",
+      alertType: 'error',
       hasAlert: false,
-      alert: ""
+      alert: '',
     };
   },
   methods: {
     async GET() {
       try {
-        const data = await this.$http.get("trip");
+        const data = await this.$http.get('trip');
         this.items = data.data;
       } catch (error) {
-        this.alertType = "error";
-        this.alert = "Error while loading the data from api...";
+        this.alertType = 'error';
+        this.alert = 'Error while loading the data from api...';
         this.hasAlert = true;
       }
     },
     async PUT(model_name, status, id) {
       try {
-        await this.$http.put("common", { model_name, status, id });
+        const r = confirm(`This will mark status as ${status}?`);
+        if (r == false) {
+          return;
+        }
+        await this.$http.put('common', { model_name, status, id });
         this.GET();
       } catch (error) {
-        this.alertType = "error";
-        this.alert = "Status change failed!";
+        this.alertType = 'error';
+        this.alert = 'Status change failed!';
         this.hasAlert = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
