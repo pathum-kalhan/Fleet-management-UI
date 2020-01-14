@@ -25,6 +25,7 @@ import placeR from './components/reports/placeR.vue';
 import fuelR from './components/reports/fuelR.vue'
 import maintaR from './components/reports/maintaR.vue'
 import financeR from './components/reports/financeR.vue'
+import summaryR from './components/reports/summaryR.vue'
 const routes = [
   {
     path: '/',
@@ -182,6 +183,16 @@ const routes = [
     }
 
   },
+  {
+    path: '/summaryR',
+    component: summaryR,
+    meta: {
+      permissions: ['admin', 'manager'],
+
+    }
+
+  },
+  
   
 
 ];

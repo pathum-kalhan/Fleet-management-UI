@@ -73,7 +73,7 @@
             class="btn"
             :fetch="POST"
             :fields="json_fields"
-            name="auditReport.csv"
+            name="financeReport.csv"
             type="csv"
             :style=" $v.$invalid ? 'pointer-events:none;cursor: no-drop;' : 'pointer-events:auto;' "
           >Download Excel</JsonExcel>

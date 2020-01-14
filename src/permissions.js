@@ -81,7 +81,7 @@ module.exports = {
                 { text: 'Maintenance report', path: '/maintaR' },
                 { text: 'Finance report', path: '/financeR' },
 
-                { text: 'Summary report', path: '/categoryR' },
+                { text: 'Summary report', path: '/summaryR' },
 
 
             ],
@@ -219,7 +219,7 @@ module.exports = {
                 { text: 'Finance report', path: '/financeR' },
 
 
-                { text: 'Summary report', path: '/categoryR' },
+                { text: 'Summary report', path: '/summaryR' },
 
 
             ],
