@@ -27,9 +27,13 @@
               </v-radio-group>
             </v-flex>
 
-            <v-flex xs12 sm12 md12>
-              <v-subheader>From</v-subheader>
-              <v-date-picker :landscape="true" v-model="dateFrom" :max="maxDate"></v-date-picker>
+            <v-flex xs12 sm12 md6>
+              <v-subheader>Created From</v-subheader>
+              <v-date-picker  v-model="dateFrom" :max="maxDate"></v-date-picker>
+            </v-flex>
+            <v-flex xs12 sm12 md6>
+              <v-subheader>Created To</v-subheader>
+              <v-date-picker  v-model="dateTo" :max="maxDate"></v-date-picker>
             </v-flex>
           </v-layout>
         </v-card-text>
@@ -53,58 +57,65 @@
 </template>
 
 <script>
-import JsonExcel from "vue-json-excel";
-import { required } from "vuelidate/lib/validators";
+import JsonExcel from 'vue-json-excel';
+import { required } from 'vuelidate/lib/validators';
 
+const date_greather_than = (value, vm) => {
+  const from = new Date(vm.dateFrom);
+  const to = new Date(value);
+  return from <= to;
+};
 export default {
   components: {
-    JsonExcel
+    JsonExcel,
   },
   validations: {
     selectedCats: { required },
     dateFrom: { required },
-    fuelType: { required }
+    dateTo: { required, date_greather_than },
+    fuelType: { required },
   },
   mounted() {
     this.GET();
-    this.maxDate = this.$moment().format("YYYY-MM-DD");
+    this.maxDate = this.$moment().format('YYYY-MM-DD');
   },
   data() {
     return {
-      maxDate:"",
+      maxDate: '',
       json_fields: {
-        Id: "id",
-        Color: "color",
-        "Fuel Type": "fuelType",
-        "Fuel Level": "fuelLevel",
-        "Tank Volume": "tankVolume",
-        Model: "make",
-        "Vehicle Registration Number": "vin",
-        "Manufactured Year": "year",
-        Notes: "notes",
+        Id: 'id',
+        Color: 'color',
+        'Fuel Type': 'fuelType',
+        'Fuel Level': 'fuelLevel',
+        'Tank Volume': 'tankVolume',
+        Model: 'make',
+        'Vehicle Registration Number': 'vin',
+        'Manufactured Year': 'year',
+        Notes: 'notes',
 
-        Status: "status",
-        createdAt: "createdAt",
-        UpdatedAt: "updatedAt"
+        Status: 'status',
+        createdAt: 'createdAt',
+        UpdatedAt: 'updatedAt',
       },
       items: [],
       selectedCats: [],
-      dateFrom: "",
-      alertType: "error",
-      alert: "Error while loading the data from api...",
+      dateFrom: '',
+      alertType: 'error',
+      alert: 'Error while loading the data from api...',
       hasAlert: false,
       categories: [],
-      fuelType: ""
+      fuelType: '',
+      dateTo: '',
     };
   },
   methods: {
     async GET() {
       try {
-        const data = await this.$http.get("category");
+        const data = await this.$http.get('category');
         this.categories = data.data;
       } catch (error) {
-        this.alertType = "error";
-        this.alert = "Error while loading the categories data from api...";
+        this.alertType = 'error';
+        this.alert = 'Error while loading the categories data from api...';
         this.hasAlert = false;
       }
     },
@@ -112,30 +123,32 @@ export default {
       try {
         const formData = {
           ids: this.selectedCats,
-          date: this.dateFrom,
-          status: this.fuelType
+          from: this.dateFrom,
+          to: this.dateTo,
+
+          status: this.fuelType,
         };
         if (this.$v.$invalid) {
-          this.alertType = "error";
-          this.alert = "Please fill all the required fields.";
+          this.alertType = 'error';
+          this.alert = 'Please fill all the required fields.';
           this.hasAlert = true;
           return;
         }
 
-        const data = await this.$http.post("/reports/vehicle", formData);
+        const data = await this.$http.post('/reports/vehicle', formData);
         if (data.data.length === 0) {
-          this.alertType = "error";
-          this.alert = "No data available!";
+          this.alertType = 'error';
+          this.alert = 'No data available!';
           this.hasAlert = true;
           return;
         }
         return data.data;
       } catch (error) {
-        this.alertType = "error";
-        this.alert = "Some thing went wrong!";
+        this.alertType = 'error';
+        this.alert = 'Some thing went wrong!';
         this.hasAlert = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
