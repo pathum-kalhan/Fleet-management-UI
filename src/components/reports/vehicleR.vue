@@ -1,6 +1,6 @@
 <template>
   <v-layout row wrap justify-center>
-    <v-flex xs12 sm12 md6>
+    <v-flex xs12 sm12 md8>
       <v-card>
         <v-card-title color="red">
           <h1>Vehicle Report</h1>
