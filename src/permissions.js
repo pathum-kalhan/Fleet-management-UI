@@ -1,5 +1,7 @@
 module.exports = {
     admin: [
+        
+      
         { icon: 'fa-chart-line', text: 'Dashboard', path: '/dashboard' },
         {
             icon: 'fa-angle-up',
@@ -64,6 +66,7 @@ module.exports = {
                 { text: 'View jobs', path: '/viewMaintence' },
             ],
         },
+       
         {
             icon: 'fa-angle-up',
             'icon-alt': 'fa-angle-down',
@@ -86,6 +89,8 @@ module.exports = {
 
             ],
         },
+        { icon: 'fa-download', text: 'Backup DB', path: '/backupdb' },
+
     ],
     staff: [
         
@@ -224,6 +229,8 @@ module.exports = {
 
             ],
         },
+        { icon: 'fa-download', text: 'Backup DB', path: '/backupdb' },
+
     ],
     driver: [
 

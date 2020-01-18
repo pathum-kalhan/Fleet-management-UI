@@ -26,6 +26,8 @@ import fuelR from './components/reports/fuelR.vue'
 import maintaR from './components/reports/maintaR.vue'
 import financeR from './components/reports/financeR.vue'
 import summaryR from './components/reports/summaryR.vue'
+
+import backupDb from './components/backupDb.vue'
 const routes = [
   {
     path: '/',
@@ -190,6 +192,15 @@ const routes = [
       permissions: ['admin', 'manager'],
 
     }
+
+  },
+  
+   {
+    path: '/backupdb',
+    name: 'backup',
+     component: backupDb,
+
+   
 
   },
   
