@@ -1,5 +1,5 @@
 <template>
-<v-layout row >
+<v-layout row wrap>
     <v-flex xs12 sm12 md12>
         <v-card>
             <v-card-title>

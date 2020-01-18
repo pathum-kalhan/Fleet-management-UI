@@ -78,7 +78,7 @@ module.exports = {
                 { text: 'Categories report', path: '/categoryR' },
                 { text: 'Vehicles report', path: '/vehicleR' },
                 { text: 'Places report', path: '/placeR' },
-                { text: 'Trips report', path: '/categoryR' },
+                // { text: 'Trips report', path: '/tripsR' },
 
                 { text: 'Fuel report', path: '/fuelR' },
                 { text: 'Maintenance report', path: '/maintaR' },
@@ -217,7 +217,7 @@ module.exports = {
                 { text: 'Categories report', path: '/categoryR' },
                 { text: 'Vehicles report', path: '/vehicleR' },
                 { text: 'Places report', path: '/placeR' },
-                { text: 'Trips report', path: '/categoryR' },
+                // { text: 'Trips report', path: '/tripsR' },
 
                 { text: 'Fuel report', path: '/fuelR' },
                 { text: 'Maintenance report', path: '/maintaR' },
